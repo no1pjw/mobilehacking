@@ -1,0 +1,3 @@
+<resources>
+    <style name="Theme.VulnBank" parent="Theme.AppCompat.Light.NoActionBar" />
+</resources>
