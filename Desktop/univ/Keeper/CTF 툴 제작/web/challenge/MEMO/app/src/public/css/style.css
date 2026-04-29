@@ -1,0 +1,235 @@
+:root {
+    --bg: #0f172a;
+    --bg-soft: #111827;
+    --card: #1f2937;
+    --card-2: #273449;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --primary: #60a5fa;
+    --primary-hover: #3b82f6;
+    --danger: #ef4444;
+    --border: #334155;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #111827 0%, #0f172a 45%, #020617 100%);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: min(920px, 92%);
+    margin: 40px auto;
+}
+
+.card {
+    background: linear-gradient(180deg, var(--card) 0%, var(--bg-soft) 100%);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+h1,
+h2,
+h3 {
+    margin-top: 0;
+}
+
+p {
+    color: var(--muted);
+}
+
+.stack {
+    display: grid;
+    gap: 12px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+input,
+textarea,
+button,
+a.btn {
+    font: inherit;
+}
+
+input,
+textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    background: #0b1220;
+    color: var(--text);
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+textarea {
+    min-height: 180px;
+    resize: vertical;
+}
+
+button,
+a.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    background: var(--primary);
+    color: #07101f;
+    padding: 10px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+button:hover,
+a.btn:hover {
+    background: var(--primary-hover);
+}
+
+.btn.secondary {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.btn.secondary:hover {
+    border-color: var(--primary);
+    color: #cbe2ff;
+}
+
+.nav-grid {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.memo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.memo-list li a {
+    display: block;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: #c7ddff;
+    text-decoration: none;
+    background: rgba(15, 23, 42, 0.45);
+}
+
+.memo-list li a:hover {
+    border-color: var(--primary);
+}
+
+.preview {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    background: rgba(15, 23, 42, 0.45);
+    white-space: pre-wrap;
+}
+
+.meta {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.logo-badge {
+    width: 84px;
+    height: 84px;
+    margin: 0 auto 14px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    font-size: 40px;
+    font-weight: 800;
+    color: #dbeafe;
+    border: 1px solid #4b6ea4;
+    background: linear-gradient(145deg, #1d4ed8 0%, #0ea5e9 100%);
+    box-shadow: 0 14px 34px rgba(14, 165, 233, 0.25);
+}
+
+.hero-title {
+    margin-bottom: 8px;
+}
+
+.hero-subtitle {
+    margin-top: 0;
+}
+
+.home-head {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home-head h2 {
+    margin: 0;
+}
+
+.status-badge {
+    border: 1px solid #475569;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: #cbd5e1;
+    background: rgba(15, 23, 42, 0.5);
+}
+
+.status-badge.ok {
+    color: #86efac;
+    border-color: #166534;
+    background: rgba(20, 83, 45, 0.35);
+}
+
+.stats-grid {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.stat-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    background: rgba(15, 23, 42, 0.45);
+}
+
+.stat-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.stat-card p {
+    margin: 0;
+    color: #dbeafe;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.hidden {
+    display: none;
+}

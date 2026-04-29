@@ -1,0 +1,13 @@
+{
+  "name": "memo-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "puppeteer-core": "^24.37.2"
+  }
+}

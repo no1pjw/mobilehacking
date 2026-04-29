@@ -1,0 +1,123 @@
+{
+  "language": "nodejs",
+  "framework": "express",
+  "template_engine": null,
+  "database": [
+    "mongodb"
+  ],
+  "web_server": [
+    "nginx"
+  ],
+  "notable_libs": [
+    "puppeteer",
+    "bcrypt"
+  ],
+  "risk_indicators": [
+    "outbound http client",
+    "headless browser / admin bot"
+  ],
+  "confidence": {
+    "language": 7,
+    "framework": 3,
+    "template_engine": 0,
+    "database": {
+      "mongodb": 3
+    },
+    "web_server": {
+      "nginx": 19
+    },
+    "notable_libs": {
+      "bcrypt": 3,
+      "puppeteer": 8
+    }
+  },
+  "evidence": {
+    "challenge/MEMO/app/Dockerfile": [
+      "filename:dockerfile"
+    ],
+    "challenge/MEMO/app/package.json": [
+      "filename:node-dependency-file",
+      "package:@nestjs/common",
+      "package:@nestjs/config",
+      "package:@nestjs/core",
+      "package:@nestjs/jwt",
+      "package:@nestjs/mongoose",
+      "package:@nestjs/platform-express",
+      "package:@types/lodash",
+      "package:bcrypt",
+      "package:class-transformer",
+      "package:class-validator",
+      "package:cookie-parser",
+      "package:express",
+      "package:helmet",
+      "package:lodash",
+      "package:mongoose",
+      "package:reflect-metadata",
+      "package:rxjs",
+      "package:@nestjs/cli",
+      "package:@nestjs/schematics",
+      "package:@nestjs/testing",
+      "package:@types/bcrypt",
+      "package:@types/cookie-parser",
+      "package:@types/express",
+      "package:@types/jest",
+      "package:@types/node",
+      "package:@types/supertest",
+      "package:@typescript-eslint/eslint-plugin",
+      "package:@typescript-eslint/parser",
+      "package:eslint",
+      "package:eslint-config-prettier",
+      "package:eslint-plugin-prettier",
+      "package:jest",
+      "package:prettier",
+      "package:source-map-support",
+      "package:supertest",
+      "package:ts-jest",
+      "package:ts-loader",
+      "package:ts-node",
+      "package:tsconfig-paths",
+      "package:typescript",
+      "package:webpack"
+    ],
+    "challenge/MEMO/bot/Dockerfile": [
+      "filename:dockerfile"
+    ],
+    "challenge/MEMO/bot/package.json": [
+      "filename:node-dependency-file",
+      "package:express",
+      "package:puppeteer-core",
+      "pattern:puppeteer",
+      "pattern:headless browser / admin bot"
+    ],
+    "challenge/MEMO/db/Dockerfile": [
+      "filename:dockerfile"
+    ],
+    "challenge/MEMO/nginx/Dockerfile": [
+      "filename:dockerfile",
+      "pattern:nginx"
+    ],
+    "challenge/MEMO/nginx/nginx.conf": [
+      "filename:nginx-config",
+      "pattern:nginx"
+    ],
+    "dependencies": [
+      "dependency:express",
+      "dependency:mongoose",
+      "dependency:bcrypt"
+    ],
+    "challenge/MEMO/docker-compose.yml": [
+      "pattern:nginx"
+    ],
+    "challenge/MEMO/app/src/public/js/common.js": [
+      "pattern:outbound http client"
+    ],
+    "challenge/MEMO/bot/public/index.html": [
+      "pattern:outbound http client"
+    ],
+    "challenge/MEMO/bot/src/index.js": [
+      "pattern:nginx",
+      "pattern:puppeteer",
+      "pattern:headless browser / admin bot"
+    ]
+  }
+}

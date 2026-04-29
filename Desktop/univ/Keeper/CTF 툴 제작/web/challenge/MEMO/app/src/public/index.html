@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/common.js" defer></script>
+    <script src="/js/index.js" defer></script>
+</head>
+
+<body>
+    <main class="container">
+        <section class="hero">
+            <div class="logo-badge">M</div>
+            <h1 class="hero-title">Memo Service</h1>
+            <p class="hero-subtitle">Write notes and share them safely when needed.</p>
+        </section>
+
+        <section class="card stack">
+            <div class="row home-head">
+                <h2 id="stateTitle">Visitor Mode</h2>
+                <span id="stateBadge" class="status-badge">Checking</span>
+            </div>
+            <p id="stateDescription">Checking login status...</p>
+
+            <div class="stats-grid">
+                <article class="stat-card">
+                    <h3>Account</h3>
+                    <p id="username">Guest</p>
+                </article>
+                <article class="stat-card">
+                    <h3>My Memo Count</h3>
+                    <p id="memoCount">-</p>
+                </article>
+            </div>
+
+            <div id="guestActions" class="nav-grid">
+                <a class="btn" href="/login">Login</a>
+                <a class="btn" href="/register">Register</a>
+            </div>
+
+            <div id="memberActions" class="nav-grid hidden">
+                <a class="btn" href="/memo/create">Create Memo</a>
+            </div>
+
+            <section id="homeMemoSection" class="stack hidden">
+                <h3>Recent Memos</h3>
+                <ul id="homeMemos" class="memo-list"></ul>
+            </section>
+        </section>
+    </main>
+</body>
+
+</html>

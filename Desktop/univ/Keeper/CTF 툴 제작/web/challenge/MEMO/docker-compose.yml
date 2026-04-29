@@ -1,0 +1,42 @@
+services:
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "443:443"
+    depends_on:
+      - web
+    networks:
+      - external
+      - internal
+
+  web:
+    build:
+      context: ./app
+    expose:
+      - "3000"
+    networks:
+      - internal
+  mongo:
+    build: ./db
+    restart: always
+    networks:
+      - internal
+
+  bot:
+    build:
+      context: ./bot
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - TARGET=https://nginx
+      - BOT_USERNAME=admin
+      - BOT_PASSWORD=password
+    networks:
+      - external
+
+networks:
+  external:
+  internal:
+    internal: true
