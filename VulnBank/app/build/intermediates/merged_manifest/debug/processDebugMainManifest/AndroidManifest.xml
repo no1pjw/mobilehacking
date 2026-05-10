@@ -27,10 +27,10 @@
         android:usesCleartextTraffic="true" >
         <activity
             android:name="com.example.vulnbank.WebActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name="com.example.vulnbank.BalanceActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name="com.example.vulnbank.MainActivity"
             android:exported="true" >

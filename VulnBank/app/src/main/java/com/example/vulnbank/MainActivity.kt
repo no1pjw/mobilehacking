@@ -9,10 +9,14 @@ import android.view.Gravity
 import android.widget.*
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKey
 
 class MainActivity : AppCompatActivity() {
-    private val adminUser = "admin"
-    private val adminPassword = "admin123"
+    /* Delete this hardcoding name
+    private val adminUser = ""
+    private val adminPassword = ""
+    */
     private val apiKey = "BANK_API_KEY_SUPER_SECRET_12345"
     private lateinit var db: SQLiteDatabase
     private lateinit var resultView: TextView
@@ -90,19 +94,36 @@ class MainActivity : AppCompatActivity() {
             val username = usernameInput.text.toString()
             val password = passwordInput.text.toString()
 
+            val cursor = db.rawQuery("SELECT * FROM users WHERE username = ? AND password = ?",
+                arrayOf(username, password))
+            val isLoginSuccess = cursor.moveToFirst()
+            cursor.close()
             Log.d("VulnBank", "Login attempt username=$username password=$password apiKey=$apiKey")
 
+            val masterKey = MasterKey.Builder(this)
+                .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+                .build()
+
+            val prefs = EncryptedSharedPreferences.create(
+                this,
+                "secure_data",
+                masterKey,
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            )
+
+            /*
             getSharedPreferences("login_data", MODE_PRIVATE).edit()
                 .putString("username", username)
                 .putString("password", password)
                 .putString("apiKey", apiKey)
                 .apply()
-
-            if (username == adminUser && password == adminPassword) {
+            */
+            if (isLoginSuccess) {
                 Toast.makeText(this, "Login success", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, BalanceActivity::class.java).apply {
                     putExtra("username", username)
-                    putExtra("balance", "10000000")
+                    //putExtra("balance", "10000000")
                 })
             } else {
                 Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show()
@@ -111,11 +132,14 @@ class MainActivity : AppCompatActivity() {
 
         searchButton.setOnClickListener {
             val keyword = searchInput.text.toString()
-            val query = "SELECT username, balance FROM users WHERE username = '$keyword'"
-            Log.d("VulnBank", "Executing SQL: $query")
+            //val query = "SELECT username, balance FROM users WHERE username = '$keyword'"
+            //Log.d("VulnBank", "Executing SQL: $query")
 
             try {
-                val cursor = db.rawQuery(query, null)
+                val cursor = db.rawQuery(
+                    "SELECT username, balance FROM users WHERE username = ?",
+                    arrayOf(keyword)
+                )
                 val result = StringBuilder()
                 while (cursor.moveToNext()) {
                     result.append("User: ")

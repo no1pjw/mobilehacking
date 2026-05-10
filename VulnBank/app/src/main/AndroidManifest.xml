@@ -4,17 +4,16 @@
     <application
         android:label="@string/app_name"
         android:theme="@style/Theme.VulnBank"
-        android:debuggable="true"
         android:allowBackup="true"
         android:usesCleartextTraffic="true">
 
         <activity
             android:name=".WebActivity"
-            android:exported="true" />
+            android:exported="false" />
 
         <activity
             android:name=".BalanceActivity"
-            android:exported="true" />
+            android:exported="false" />
 
         <activity
             android:name=".MainActivity"

@@ -1,0 +1,4 @@
+#Mon May 04 11:13:20 KST 2026
+base.0=C\:\\Users\\JW\\Desktop\\univ\\Keeper\\2026_mobilie_hacking\\mobilehacking\\VulnBank\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\0\\classes.dex
+path.0=0/classes.dex
+renamed.0=classes.dex

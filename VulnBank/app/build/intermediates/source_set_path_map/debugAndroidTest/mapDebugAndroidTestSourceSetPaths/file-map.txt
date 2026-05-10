@@ -1,0 +1,4 @@
+com.example.vulnbank.test.app-androidTest-0 C:\Users\JW\Desktop\univ\Keeper\2026_mobilie_hacking\mobilehacking\VulnBank\app\build\generated\res\resValues\androidTest\debug
+com.example.vulnbank.test.app-mergeDebugAndroidTestResources-1 C:\Users\JW\Desktop\univ\Keeper\2026_mobilie_hacking\mobilehacking\VulnBank\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.vulnbank.test.app-mergeDebugAndroidTestResources-2 C:\Users\JW\Desktop\univ\Keeper\2026_mobilie_hacking\mobilehacking\VulnBank\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.vulnbank.test.app-debugAndroidTest-3 C:\Users\JW\Desktop\univ\Keeper\2026_mobilie_hacking\mobilehacking\VulnBank\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

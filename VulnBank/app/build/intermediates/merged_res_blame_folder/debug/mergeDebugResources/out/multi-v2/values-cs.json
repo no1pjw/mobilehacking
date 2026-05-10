@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.vulnbank.app-mergeDebugResources-21:/values-cs/values-cs.xml",
+            "outputFile": "com.example.vulnbank.app-mergeDebugResources-22:/values-cs/values-cs.xml",
             "map": [
                 {
                     "source": "C:\\Users\\JW\\.gradle\\caches\\9.0-milestone-1\\transforms\\f34e627b7c7f83ce86e7ea3aa9614e1f\\transformed\\core-1.13.0\\res\\values-cs\\values-cs.xml",

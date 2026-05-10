@@ -11,8 +11,22 @@ class BalanceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val username = intent.getStringExtra("username") ?: "unknown"
-        val balance = intent.getStringExtra("balance") ?: "0"
+        val username = intent.getStringExtra("username") ?: return
+
+        val db = openOrCreateDatabase("vulnbank.db", MODE_PRIVATE, null)
+
+        val cursor = db.rawQuery(
+            "SELECT balance FROM users WHERE username=?",
+            arrayOf(username)
+        )
+
+        var balance = "0"
+
+        if (cursor.moveToFirst()) {
+            balance = cursor.getString(0)
+        }
+
+        cursor.close()
 
         Log.d("VulnBank", "BalanceActivity opened username=$username balance=$balance")
 

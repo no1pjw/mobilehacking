@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.vulnbank.app-mergeDebugResources-21:/values/values.xml",
+            "outputFile": "com.example.vulnbank.app-mergeDebugResources-22:/values/values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\JW\\.gradle\\caches\\9.0-milestone-1\\transforms\\5000cdd71ede8a16fca454fc1c263cae\\transformed\\jetified-activity-1.7.0\\res\\values\\values.xml",
@@ -35,6 +35,40 @@
                         "startOffsets": "16896",
                         "endColumns": "42",
                         "endOffsets": "16934"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\JW\\Desktop\\univ\\Keeper\\2026_mobilie_hacking\\mobilehacking\\VulnBank\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "45",
+                        "endOffsets": "57"
+                    },
+                    "to": {
+                        "startLines": "299",
+                        "startColumns": "4",
+                        "startOffsets": "19429",
+                        "endColumns": "45",
+                        "endOffsets": "19470"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\JW\\Desktop\\univ\\Keeper\\2026_mobilie_hacking\\mobilehacking\\VulnBank\\app\\src\\main\\res\\values\\themes.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "78",
+                        "endOffsets": "90"
+                    },
+                    "to": {
+                        "startLines": "1715",
+                        "startColumns": "4",
+                        "startOffsets": "113830",
+                        "endColumns": "77",
+                        "endOffsets": "113903"
                     }
                 },
                 {
@@ -74,23 +108,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\JW\\Downloads\\VulnBank\\VulnBank\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "1",
-                        "startColumns": "4",
-                        "startOffsets": "16",
-                        "endColumns": "45",
-                        "endOffsets": "57"
-                    },
-                    "to": {
-                        "startLines": "299",
-                        "startColumns": "4",
-                        "startOffsets": "19429",
-                        "endColumns": "45",
-                        "endOffsets": "19470"
-                    }
-                },
-                {
                     "source": "C:\\Users\\JW\\.gradle\\caches\\9.0-milestone-1\\transforms\\72b2147147f1d31efe91371dc2286855\\transformed\\fragment-1.5.4\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,10",
@@ -124,23 +141,6 @@
                         "startOffsets": "19346",
                         "endColumns": "82",
                         "endOffsets": "19424"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\JW\\Downloads\\VulnBank\\VulnBank\\app\\src\\main\\res\\values\\themes.xml",
-                    "from": {
-                        "startLines": "1",
-                        "startColumns": "4",
-                        "startOffsets": "16",
-                        "endColumns": "78",
-                        "endOffsets": "90"
-                    },
-                    "to": {
-                        "startLines": "1715",
-                        "startColumns": "4",
-                        "startOffsets": "113830",
-                        "endColumns": "77",
-                        "endOffsets": "113903"
                     }
                 },
                 {
