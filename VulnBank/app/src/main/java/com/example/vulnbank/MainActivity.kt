@@ -1,173 +1,94 @@
 package com.example.vulnbank
 
 import android.content.Intent
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.text.InputType
-import android.util.Log
-import android.view.Gravity
-import android.widget.*
-import android.graphics.Typeface
+import android.widget.EditText
+import android.widget.ScrollView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKey
 
 class MainActivity : AppCompatActivity() {
-    /* Delete this hardcoding name
-    private val adminUser = ""
-    private val adminPassword = ""
-    */
-    private val apiKey = "BANK_API_KEY_SUPER_SECRET_12345"
-    private lateinit var db: SQLiteDatabase
-    private lateinit var resultView: TextView
+    private lateinit var store: BankStore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        store = BankStore(this)
 
-        db = openOrCreateDatabase("vulnbank.db", MODE_PRIVATE, null)
-        setupDatabase()
-
-        val root = LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
-            setPadding(36, 70, 36, 36)
+        val idInput = EditText(this).apply {
+            hint = "아이디"
+            setText("jiyun")
+        }
+        val nameInput = EditText(this).apply {
+            hint = "이름"
+            setText("지윤")
+        }
+        val pinInput = EditText(this).apply {
+            hint = "간편 비밀번호"
+            setText("1234")
+            inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_PASSWORD
         }
 
-        val title = TextView(this).apply {
-            text = "VulnBank"
-            textSize = 30f
-            typeface = Typeface.DEFAULT_BOLD
-            gravity = Gravity.CENTER
-        }
-
-        val subtitle = TextView(this).apply {
-            text = "Deliberately vulnerable mobile lab"
-            textSize = 14f
-            gravity = Gravity.CENTER
-        }
-
-        val usernameInput = EditText(this).apply {
-            hint = "Username"
-            setText("admin")
-        }
-
-        val passwordInput = EditText(this).apply {
-            hint = "Password"
-            setText("admin123")
-            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-        }
-
-        val loginButton = Button(this).apply { text = "Login" }
-
-        val searchInput = EditText(this).apply {
-            hint = "Search user by name"
-        }
-
-        val searchButton = Button(this).apply { text = "Search User" }
-
-        val sqliHint = TextView(this).apply {
-            text = "Try search: ' OR '1'='1"
-            textSize = 12f
-        }
-
-        resultView = TextView(this).apply {
-            text = "Search results will appear here."
-            textSize = 15f
-            setPadding(0, 20, 0, 20)
-        }
-
-        val webButton = Button(this).apply { text = "Open Notice WebView" }
-
-        root.addView(title)
-        root.addView(subtitle)
-        root.addView(usernameInput)
-        root.addView(passwordInput)
-        root.addView(loginButton)
-        root.addView(searchInput)
-        root.addView(searchButton)
-        root.addView(sqliHint)
-        root.addView(resultView)
-        root.addView(webButton)
-
-        setContentView(root)
-
-        loginButton.setOnClickListener {
-            val username = usernameInput.text.toString()
-            val password = passwordInput.text.toString()
-
-            val cursor = db.rawQuery("SELECT * FROM users WHERE username = ? AND password = ?",
-                arrayOf(username, password))
-            val isLoginSuccess = cursor.moveToFirst()
-            cursor.close()
-            Log.d("VulnBank", "Login attempt username=$username password=$password apiKey=$apiKey")
-
-            val masterKey = MasterKey.Builder(this)
-                .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
-                .build()
-
-            val prefs = EncryptedSharedPreferences.create(
-                this,
-                "secure_data",
-                masterKey,
-                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            )
-
-            /*
-            getSharedPreferences("login_data", MODE_PRIVATE).edit()
-                .putString("username", username)
-                .putString("password", password)
-                .putString("apiKey", apiKey)
-                .apply()
-            */
-            if (isLoginSuccess) {
-                Toast.makeText(this, "Login success", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, BalanceActivity::class.java).apply {
-                    putExtra("username", username)
-                    //putExtra("balance", "10000000")
-                })
-            } else {
-                Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        searchButton.setOnClickListener {
-            val keyword = searchInput.text.toString()
-            //val query = "SELECT username, balance FROM users WHERE username = '$keyword'"
-            //Log.d("VulnBank", "Executing SQL: $query")
-
-            try {
-                val cursor = db.rawQuery(
-                    "SELECT username, balance FROM users WHERE username = ?",
-                    arrayOf(keyword)
-                )
-                val result = StringBuilder()
-                while (cursor.moveToNext()) {
-                    result.append("User: ")
-                        .append(cursor.getString(0))
-                        .append(", Balance: ")
-                        .append(cursor.getString(1))
-                        .append("\n")
-                }
-                cursor.close()
-                resultView.text = if (result.isEmpty()) "No result" else result.toString()
-            } catch (e: Exception) {
-                resultView.text = "SQL Error: ${e.message}"
-                Log.e("VulnBank", "SQL error", e)
-            }
-        }
-
-        webButton.setOnClickListener {
-            startActivity(Intent(this, WebActivity::class.java).apply {
-                putExtra("url", "http://example.com")
+        val root = screenRoot().apply {
+            addView(TextView(this@MainActivity).apply {
+                text = "VulnBank"
+                textSize = 40f
+                setTextColor(Palette.Ink)
+                typeface = android.graphics.Typeface.DEFAULT_BOLD
+                setPadding(0, dp(36), 0, dp(6))
             })
-        }
-    }
+            addView(subtitle("매일 쓰는 돈 관리, 더 가볍게"))
 
-    private fun setupDatabase() {
-        db.execSQL("CREATE TABLE IF NOT EXISTS users (username TEXT, password TEXT, balance TEXT)")
-        db.execSQL("DELETE FROM users")
-        db.execSQL("INSERT INTO users VALUES ('admin', 'admin123', '10000000')")
-        db.execSQL("INSERT INTO users VALUES ('alice', 'alicepass', '50000')")
-        db.execSQL("INSERT INTO users VALUES ('bob', 'bobpass', '30000')")
+            addView(card().apply {
+                addView(TextView(this@MainActivity).apply {
+                    text = "시작하기"
+                    textSize = 22f
+                    setTextColor(Palette.Ink)
+                    typeface = android.graphics.Typeface.DEFAULT_BOLD
+                })
+                addView(idInput.withTopMargin(this@MainActivity, 12))
+                addView(nameInput)
+                addView(pinInput)
+                addView(primaryButton("로그인").apply {
+                    setOnClickListener {
+                        val id = idInput.text.toString()
+                        val pin = pinInput.text.toString()
+                        if (store.login(id, pin)) {
+                            Session.username = id.trim().lowercase()
+                            startActivity(Intent(this@MainActivity, BalanceActivity::class.java))
+                        } else {
+                            Toast.makeText(this@MainActivity, "아이디나 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }.withTopMargin(this@MainActivity, 10))
+                addView(secondaryButton("새 계좌 만들기").apply {
+                    setOnClickListener {
+                        val ok = store.createProfile(
+                            idInput.text.toString(),
+                            nameInput.text.toString(),
+                            pinInput.text.toString()
+                        )
+                        Toast.makeText(
+                            this@MainActivity,
+                            if (ok) "계좌가 만들어졌어요. 로그인해주세요." else "다른 아이디를 사용해주세요.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                })
+            })
+
+            addView(section("오늘의 금융"))
+            addView(card().apply {
+                addView(TextView(this@MainActivity).apply {
+                    text = "송금, 카드, 저축 목표를 한 곳에서 확인하세요."
+                    textSize = 16f
+                    setTextColor(Palette.Muted)
+                })
+            })
+            animateChildren()
+        }
+
+        setContentView(ScrollView(this).apply { addView(root) })
     }
 }

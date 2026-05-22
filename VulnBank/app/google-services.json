@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "571412215510",
+    "project_id": "vulnbank-5a7ff",
+    "storage_bucket": "vulnbank-5a7ff.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571412215510:android:d3ca70159f8be064c37b77",
+        "android_client_info": {
+          "package_name": "com.example.vulnbank"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_NvTm8SCqIBmmDawwOU0ajaX-5Y1Fkdo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -907,8 +907,14 @@ int string call_notification_hang_up_action 0x7f0c0020
 int string call_notification_incoming_text 0x7f0c0021
 int string call_notification_ongoing_text 0x7f0c0022
 int string call_notification_screening_text 0x7f0c0023
-int string search_menu_title 0x7f0c0024
-int string status_bar_notification_info_overflow 0x7f0c0025
+int string gcm_defaultSenderId 0x7f0c0024
+int string google_api_key 0x7f0c0025
+int string google_app_id 0x7f0c0026
+int string google_crash_reporting_api_key 0x7f0c0027
+int string google_storage_bucket 0x7f0c0028
+int string project_id 0x7f0c0029
+int string search_menu_title 0x7f0c002a
+int string status_bar_notification_info_overflow 0x7f0c002b
 int style AlertDialog_AppCompat 0x7f0d0000
 int style AlertDialog_AppCompat_Light 0x7f0d0001
 int style Animation_AppCompat_Dialog 0x7f0d0002

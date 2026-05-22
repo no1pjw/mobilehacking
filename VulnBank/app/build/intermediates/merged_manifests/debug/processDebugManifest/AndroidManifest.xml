@@ -24,12 +24,21 @@
         android:label="@string/app_name"
         android:testOnly="true"
         android:theme="@style/Theme.VulnBank"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="false" >
         <activity
             android:name="com.example.vulnbank.WebActivity"
             android:exported="false" />
         <activity
             android:name="com.example.vulnbank.BalanceActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.vulnbank.TransferActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.vulnbank.CardControlActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.vulnbank.HybridSupportActivity"
             android:exported="false" />
         <activity
             android:name="com.example.vulnbank.MainActivity"

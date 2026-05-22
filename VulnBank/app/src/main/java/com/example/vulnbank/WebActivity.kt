@@ -1,7 +1,6 @@
 package com.example.vulnbank
 
 import android.os.Bundle
-import android.util.Log
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
@@ -14,13 +13,12 @@ class WebActivity : AppCompatActivity() {
         setContentView(webView)
 
         webView.webViewClient = WebViewClient()
-        webView.settings.javaScriptEnabled = true
-        webView.settings.allowFileAccess = true
-        webView.settings.allowContentAccess = true
-        webView.settings.domStorageEnabled = true
+        webView.settings.javaScriptEnabled = false
+        webView.settings.allowFileAccess = false
+        webView.settings.allowContentAccess = false
+        webView.settings.domStorageEnabled = false
 
-        val url = intent.getStringExtra("url") ?: "http://example.com"
-        Log.d("VulnBank", "Loading URL: $url")
+        val url = intent.getStringExtra("url") ?: "https://example.com"
         webView.loadUrl(url)
     }
 }
